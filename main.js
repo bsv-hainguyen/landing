@@ -416,7 +416,8 @@
   // ---------- interaction
 
   window.addEventListener('pointerdown', (e) => {
-    if (e.button !== 0) return;
+    // footer links (Privacy / Terms) should just navigate, not start a drag
+    if (e.button !== 0 || (e.target instanceof Element && e.target.closest('a'))) return;
     drag.active = true;
     drag.moved = false;
     drag.x = drag.lastX = e.clientX;

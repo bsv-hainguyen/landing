@@ -214,6 +214,29 @@ h1 {
   text-transform: uppercase;
 }
 
+.foot-left,
+.legal {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.legal a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.legal a:hover {
+  color: var(--fg);
+}
+
+.legal a:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 .telemetry {
   display: flex;
   gap: 28px;
