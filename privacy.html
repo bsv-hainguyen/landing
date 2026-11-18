@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Privacy Policy · Aether</title>
-  <meta name="description" content="How Aether collects, uses and protects your information, including data received through Sign in with Google." />
+  <title>Privacy Policy · TaskFlow</title>
+  <meta name="description" content="How the TaskFlow macOS app accesses, uses and stores data, including read-only Google Sheets data. Everything stays on your Mac." />
   <link rel="canonical" href="https://bsv-hainguyen.github.io/landing/privacy.html" />
   <meta name="theme-color" content="#04050b" />
   <meta name="color-scheme" content="dark" />
@@ -19,9 +19,9 @@
 <body>
   <div class="wrap">
     <header class="top">
-      <a class="brand" href="./" aria-label="Aether home">
+      <a class="brand" href="./" aria-label="TaskFlow home">
         <span class="brand-mark" aria-hidden="true"></span>
-        <span>AETHER</span>
+        <span>TASKFLOW</span>
       </a>
       <a class="back" href="./">&larr; Back to home</a>
     </header>
@@ -32,94 +32,144 @@
       <p class="updated">Last updated: November 18, 2026</p>
 
       <p>
-        This Privacy Policy explains how Aether (&ldquo;Aether&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) collects,
-        uses and protects information when you visit this website or use the Aether application, including when
-        you sign in with your Google account.
+        TaskFlow is a desktop app for macOS that keeps task folders next to the code repositories they belong to.
+        This policy explains what data TaskFlow accesses, including Google user data when you connect a Google
+        account, and how that data is used, stored and shared. TaskFlow and this website are run by the TaskFlow team
+        (&ldquo;we&rdquo;, &ldquo;us&rdquo;).
       </p>
 
-      <h2>1. Information we collect</h2>
-      <ul>
-        <li>
-          <strong>Google account information.</strong> When you choose &ldquo;Sign in with Google&rdquo;, Google shares
-          with us, with your permission, your name, email address and profile picture. We request only the basic
-          <code>openid</code>, <code>email</code> and <code>profile</code> scopes. We do not request access to your
-          Gmail, Google Drive, Contacts, Calendar or any other Google data.
-        </li>
-        <li>
-          <strong>Information you send us.</strong> For example, the content of an email you send to our support
-          address.
-        </li>
-        <li>
-          <strong>Technical data.</strong> This website is hosted on GitHub Pages. GitHub may log visitor IP addresses
-          for security purposes, as described in the
-          <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub Privacy Statement</a>.
-          Fonts are served by Google Fonts, which receives your IP address when the page loads.
-        </li>
-      </ul>
-      <p>This website does not use cookies, analytics or advertising trackers.</p>
+      <p class="note">
+        <strong>In short:</strong> TaskFlow runs entirely on your Mac and has no server of its own. Data that TaskFlow
+        reads from Google goes straight from Google to your computer. It is never sent to us or to anyone else.
+      </p>
 
-      <h2>2. How we use information</h2>
+      <h2>1. Google user data TaskFlow accesses</h2>
+      <p>
+        Connecting a Google account is optional. It is only needed for the Q&amp;A feature, which loads client
+        questions and answers from a Google Sheet. When you connect, TaskFlow asks for these permissions:
+      </p>
       <ul>
-        <li>To sign you in and keep your account secure.</li>
-        <li>To provide, maintain and improve the service.</li>
-        <li>To respond to your requests and send service-related messages.</li>
+        <li>
+          <code>openid</code> and <code>email</code>: your Google account&rsquo;s email address, used only to show
+          which account is connected in Settings.
+        </li>
+        <li>
+          <code>https://www.googleapis.com/auth/spreadsheets.readonly</code>: read-only access to Google Sheets that
+          your account can already open. TaskFlow only reads the spreadsheets whose links you add to a task. It never
+          creates, edits or deletes anything in Google Sheets.
+        </li>
       </ul>
-      <p>We do not use your Google user data for advertising, and we never sell it.</p>
+      <p>
+        TaskFlow does not ask for your name or profile picture, and it does not access Gmail, Google Drive files,
+        Contacts, Calendar or any other Google data.
+      </p>
+
+      <h2>2. How TaskFlow uses Google user data</h2>
+      <ul>
+        <li>To show the connected account&rsquo;s email address in Settings.</li>
+        <li>
+          To load the Q&amp;A tab linked to a task, keep only the rows that belong to that task, and save them as a
+          Markdown file in the task&rsquo;s <code>qa/</code> folder on your Mac.
+        </li>
+        <li>To mark which questions are new or changed since the last load.</li>
+      </ul>
+      <p>
+        Google user data is used only for these features. It is not used for advertising, it is never sold, and it is
+        not used to develop, improve or train generalized artificial intelligence or machine learning models.
+      </p>
 
       <h2>3. Google API Services User Data Policy</h2>
       <p class="note">
-        Aether&rsquo;s use and transfer to any other app of information received from Google APIs will adhere to the
+        TaskFlow&rsquo;s use and transfer to any other app of information received from Google APIs will adhere to the
         <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">Google API Services User Data Policy</a>,
         including the Limited Use requirements.
       </p>
 
-      <h2>4. Sharing</h2>
-      <p>We do not sell, rent or trade personal information. We share it only:</p>
+      <h2>4. Where data is stored</h2>
+      <p>Everything stays on your Mac:</p>
       <ul>
-        <li>with service providers that help us run the service, such as hosting, under confidentiality obligations;</li>
-        <li>when required by law, or to protect the rights and safety of our users and others;</li>
-        <li>with your explicit consent.</li>
+        <li>
+          <strong>Sign-in token:</strong> the refresh token is stored in the macOS Keychain. Short-lived access tokens
+          are kept in memory only and are never written to disk.
+        </li>
+        <li>
+          <strong>App settings:</strong> the connected email address, the sheet link and the task name on the sheet
+          are saved in <code>~/Library/Application Support/taskflow/state.json</code>.
+        </li>
+        <li>
+          <strong>Q&amp;A files:</strong> each load that finds changes creates a new Markdown file in the task&rsquo;s
+          <code>qa/</code> folder.
+        </li>
+        <li>
+          <strong>Snapshot:</strong> the rows from the last load are kept in
+          <code>~/Library/Application Support/taskflow/qa/</code> so TaskFlow can tell what changed.
+        </li>
       </ul>
-
-      <h2>5. Data retention and deletion</h2>
       <p>
-        We keep your information only for as long as your account is active or as needed to provide the service.
-        You can ask us to delete your data at any time by emailing
-        <!-- TODO: replace with the real contact email -->
-        <a href="mailto:contact@example.com">contact@example.com</a>. We will delete it within 30 days.
-      </p>
-      <p>
-        You can also remove Aether&rsquo;s access to your Google account at any time from your
-        <a href="https://myaccount.google.com/permissions" rel="noopener">Google Account permissions</a> page.
+        Files saved on your Mac are under your control. If you open them with other tools, such as an AI coding
+        assistant running in TaskFlow&rsquo;s terminal, that tool&rsquo;s own terms and privacy policy apply.
       </p>
 
-      <h2>6. Security</h2>
+      <h2>5. Sharing</h2>
       <p>
-        We use industry-standard measures, including encrypted HTTPS connections, to protect your information.
-        No method of transmission or storage is completely secure, but we work to keep your data safe.
+        We do not receive, sell, share or transfer Google user data. TaskFlow only connects to Google&rsquo;s servers
+        (<code>accounts.google.com</code>, <code>oauth2.googleapis.com</code> and <code>sheets.googleapis.com</code>),
+        always over HTTPS. The app has no analytics, tracking or advertising code.
       </p>
 
-      <h2>7. Children&rsquo;s privacy</h2>
+      <h2>6. Disconnecting and deleting data</h2>
+      <ul>
+        <li>
+          <strong>Disconnect</strong> in TaskFlow&rsquo;s Settings revokes TaskFlow&rsquo;s access with Google and
+          removes the token from the Keychain. Q&amp;A files you already created stay in your task folders.
+        </li>
+        <li>
+          You can also remove TaskFlow&rsquo;s access at any time from your
+          <a href="https://myaccount.google.com/permissions" rel="noopener">Google Account permissions</a> page.
+        </li>
+        <li>
+          Removing a task from TaskFlow deletes its snapshot. To delete all app data, delete the
+          <code>~/Library/Application Support/taskflow/</code> folder and any Q&amp;A files you no longer need.
+        </li>
+      </ul>
+      <p>Because we never receive your data, there is nothing stored on our side to delete.</p>
+
+      <h2>7. Security</h2>
       <p>
-        Aether is not directed to children under 13, and we do not knowingly collect personal information from them.
+        Sign-in uses Google&rsquo;s OAuth 2.0 flow for desktop apps in your default browser, protected with PKCE and a
+        random state value. Tokens are kept in the macOS Keychain or in memory, and all requests to Google use HTTPS.
       </p>
 
-      <h2>8. Changes to this policy</h2>
+      <h2>8. This website</h2>
       <p>
-        We may update this policy from time to time. When we do, we will change the &ldquo;Last updated&rdquo; date
-        at the top of this page.
+        This website is hosted on GitHub Pages. GitHub may log visitor IP addresses for security purposes, as described
+        in the
+        <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub Privacy Statement</a>.
+        Fonts are served by Google Fonts, which receives your IP address when a page loads. The website does not use
+        cookies, analytics or advertising trackers.
       </p>
 
-      <h2>9. Contact</h2>
+      <h2>9. Children&rsquo;s privacy</h2>
+      <p>
+        TaskFlow is a tool for software teams and is not directed to children under 13. We do not knowingly collect
+        personal information from children.
+      </p>
+
+      <h2>10. Changes to this policy</h2>
+      <p>
+        We may update this policy, for example when TaskFlow adds a feature that uses new data. When we do, we will
+        change the &ldquo;Last updated&rdquo; date at the top of this page.
+      </p>
+
+      <h2>11. Contact</h2>
       <p>
         Questions about this policy? Email us at
-        <!-- TODO: replace with the real contact email -->
-        <a href="mailto:contact@example.com">contact@example.com</a>.
+        <a href="mailto:hainguyen@bravesoft.com.vn">hainguyen@bravesoft.com.vn</a>.
       </p>
     </main>
 
     <footer class="foot">
-      <span>&copy; 2026 Aether Labs</span>
+      <span>&copy; 2026 TaskFlow</span>
       <nav aria-label="Legal">
         <a href="privacy.html" aria-current="page">Privacy</a>
         <a href="terms.html">Terms</a>

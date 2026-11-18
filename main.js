@@ -479,20 +479,6 @@
     });
   });
 
-  // ---------- fake telemetry in the footer
-
-  const tSync = document.getElementById('t-sync');
-  const tNodes = document.getElementById('t-nodes');
-  const tLat = document.getElementById('t-lat');
-  let nodes = 12480;
-  setInterval(() => {
-    if (document.hidden) return;
-    nodes += Math.floor(Math.random() * 7);
-    tSync.textContent = `${(99.7 + Math.random() * 0.25).toFixed(2)}%`;
-    tNodes.textContent = nodes.toLocaleString('en-US');
-    tLat.textContent = `${3 + Math.floor(Math.random() * 4)}ms`;
-  }, 1400);
-
   // ---------- start
 
   buildSprites();
